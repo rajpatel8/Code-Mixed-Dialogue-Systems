@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <!-- Background -->
+  <rect width="900" height="600" fill="#f8f9fa" rx="10" ry="10" />
+  
+  <!-- Title -->
+  <text x="450" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Hindi-English Code-Switching Model Workflow</text>
+  
+  <!-- Training Process (Left Side) -->
+  <rect x="50" y="80" width="300" height="440" fill="#e6f7ff" stroke="#1890ff" stroke-width="2" rx="10" ry="10" />
+  <text x="200" y="110" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#1890ff">Training Process</text>
+  
+  <!-- Data Preparation -->
+  <rect x="80" y="130" width="240" height="60" fill="#ffffff" stroke="#1890ff" stroke-width="2" rx="8" ry="8" />
+  <text x="200" y="168" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Data Collection &amp; Preparation</text>
+  
+  <!-- Data Properties -->
+  <rect x="100" y="200" width="200" height="80" fill="#ffffff" stroke="#1890ff" stroke-width="1" rx="5" ry="5" />
+  <text x="200" y="220" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Code-switched conversations</text>
+  <text x="200" y="242" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Age groups: Teen, Adult, Senior</text>
+  <text x="200" y="264" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Regions: North, South, West</text>
+  
+  <!-- Fine-tuning -->
+  <rect x="80" y="290" width="240" height="60" fill="#ffffff" stroke="#1890ff" stroke-width="2" rx="8" ry="8" />
+  <text x="200" y="328" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Fine-tuning XLM-RoBERTa</text>
+  
+  <!-- Training Parameters -->
+  <rect x="100" y="360" width="200" height="100" fill="#ffffff" stroke="#1890ff" stroke-width="1" rx="5" ry="5" />
+  <text x="200" y="380" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Task: Masked Language Modeling</text>
+  <text x="200" y="402" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Epochs: 5</text>
+  <text x="200" y="424" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Learning rate: 2e-5</text>
+  <text x="200" y="446" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">MLM probability: 15%</text>
+  
+  <!-- Model Deployment -->
+  <rect x="80" y="470" width="240" height="40" fill="#ffffff" stroke="#1890ff" stroke-width="2" rx="8" ry="8" />
+  <text x="200" y="494" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">HuggingFace Deployment</text>
+  
+  <!-- Inference Process (Right Side) -->
+  <rect x="550" y="80" width="300" height="440" fill="#f6ffed" stroke="#52c41a" stroke-width="2" rx="10" ry="10" />
+  <text x="700" y="110" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#52c41a">Inference Process</text>
+  
+  <!-- Input -->
+  <rect x="580" y="130" width="240" height="60" fill="#ffffff" stroke="#52c41a" stroke-width="2" rx="8" ry="8" />
+  <text x="700" y="168" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Input Masked Sentence</text>
+  
+  <!-- Example -->
+  <rect x="600" y="200" width="200" height="40" fill="#ffffff" stroke="#52c41a" stroke-width="1" rx="5" ry="5" />
+  <text x="700" y="224" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">"&lt;mask&gt;, kya scene hai?"</text>
+  
+  <!-- Model Prediction -->
+  <rect x="580" y="250" width="240" height="60" fill="#ffffff" stroke="#52c41a" stroke-width="2" rx="8" ry="8" />
+  <text x="700" y="288" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Code-Switch Model Prediction</text>
+  
+  <!-- Prediction Examples -->
+  <rect x="600" y="320" width="200" height="80" fill="#ffffff" stroke="#52c41a" stroke-width="1" rx="5" ry="5" />
+  <text x="700" y="340" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">"Bhai" (0.1594)</text>
+  <text x="700" y="362" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">"Hello" (0.1397)</text>
+  <text x="700" y="384" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">"Hi" (0.1270)</text>
+  
+  <!-- Demographic Analysis -->
+  <rect x="580" y="410" width="240" height="60" fill="#ffffff" stroke="#52c41a" stroke-width="2" rx="8" ry="8" />
+  <text x="700" y="448" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Zero-Shot Demographic Analysis</text>
+  
+  <!-- Demographics Result -->
+  <rect x="600" y="480" width="200" height="40" fill="#ffffff" stroke="#52c41a" stroke-width="1" rx="5" ry="5" />
+  <text x="700" y="504" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Age &amp; Region Classification</text>
+  
+  <!-- Connecting Arrows -->
+  <!-- Training Process -->
+  <path d="M 200 190 L 200 200" stroke="#1890ff" stroke-width="2" fill="none" />
+  <path d="M 200 280 L 200 290" stroke="#1890ff" stroke-width="2" fill="none" />
+  <path d="M 200 350 L 200 360" stroke="#1890ff" stroke-width="2" fill="none" />
+  <path d="M 200 460 L 200 470" stroke="#1890ff" stroke-width="2" fill="none" />
+  
+  <!-- Inference Process -->
+  <path d="M 700 190 L 700 200" stroke="#52c41a" stroke-width="2" fill="none" />
+  <path d="M 700 240 L 700 250" stroke="#52c41a" stroke-width="2" fill="none" />
+  <path d="M 700 310 L 700 320" stroke="#52c41a" stroke-width="2" fill="none" />
+  <path d="M 700 400 L 700 410" stroke="#52c41a" stroke-width="2" fill="none" />
+  <path d="M 700 470 L 700 480" stroke="#52c41a" stroke-width="2" fill="none" />
+  
+  <!-- Central Arrow connecting Training to Inference -->
+  <path d="M 350 300 L 550 300" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)" />
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- Central Label -->
+  <rect x="400" y="270" width="100" height="60" fill="#fff" stroke="#333" stroke-width="1" rx="5" ry="5" />
+  <text x="450" y="300" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Trained</text>
+  <text x="450" y="318" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Model</text>
+</svg>

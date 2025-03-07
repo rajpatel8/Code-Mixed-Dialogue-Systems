@@ -1,16 +1,83 @@
 # Hindi-English Code-Switching Model
 
-This repository contains a fine-tuned XLM-RoBERTa model for Hindi-English code-switching. The model predicts masked tokens in mixed-language sentences, capturing natural patterns of language mixing across different demographics.
+A fine-tuned XLM-RoBERTa model for Hindi-English code-switching prediction and demographic analysis.
 
-## Getting Started
+> **Quick Start :** To instantly test this model, simply run the `RunMe.ipynb` Jupyter notebook included in this repository. All the necessary code and examples are ready to execute.
 
-**To quickly see the model in action, run the `RunMe.ipynb` Jupyter notebook.**
+## Project Overview
 
-This will demonstrate the model's capabilities with code-switched sentences and provide demographic analysis of the predictions.
+This project implements a Masked Language Model (MLM) that understands and predicts Hindi-English code-switching patterns across different demographic groups. The model can predict masked tokens in mixed-language sentences and analyze the demographic properties of these predictions.
 
-If you prefer to run the code yourself, see the examples below.
+![Model Workflow](/docs/workflow-diagram.svg)
 
-## Quick Start
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/hindi-english-code-switching.git
+cd hindi-english-code-switching
+
+# Install dependencies
+pip install -r requirements.txt
+
+# All set! Now, open and run RunMe.ipynb
+```
+
+## Architecture
+
+The model architecture consists of:
+
+1. **Base Model**: XLM-RoBERTa (multilingual transformer model)
+   - 12 encoder layers
+   - 768 hidden dimensions
+   - 12 attention heads
+   - 250K vocabulary tokens
+
+2. **Driver Components**:
+   - **Tokenizer**: XLM-RoBERTa tokenizer with SentencePiece
+   - **MLM Head**: Linear layer for masked token prediction
+   - **Zero-Shot Classifier**: BART-large-mnli for demographic analysis
+
+3. **Data Flow**:
+   - Input text → Tokenization → Token embeddings → Transformer layers → MLM prediction
+   - Predicted tokens → Zero-shot classifier → Demographic properties
+
+## FAIR-Compliant Code Structure
+
+```
+hindi-english-code-switching/
+├── data/
+│   └── data-4.json            # Training dataset
+├── models/
+│   └── README.md              # Points to HuggingFace model
+├── notebooks/
+│   └── RunMe.ipynb            # Demo notebook
+├── src/
+│   ├── train.py               # Training script
+│   └── test.py                # Testing/evaluation script
+├── docs/
+│   └── workflow-diagram.svg   # Visualization of model workflow
+├── README.md                  # Project documentation
+├── requirements.txt           # Dependencies
+└── LICENSE                    # MIT License
+```
+
+### Code Features
+
+- **Modular Design**: Separates training, testing, and evaluation components
+- **Reproducibility**: Fixed random seeds and documented hyperparameters
+- **Interoperability**: Compatible with the HuggingFace ecosystem
+- **Documentation**: Inline comments and function docstrings
+
+## Quickstart
+
+Run the provided Jupyter notebook to instantly see the model in action:
+
+```bash
+jupyter notebook notebooks/RunMe.ipynb
+```
+
+Or use the model with just a few lines of code:
 
 ```python
 from transformers import AutoTokenizer, AutoModelForMaskedLM, pipeline
@@ -22,214 +89,67 @@ model = AutoModelForMaskedLM.from_pretrained("lord-rajkumar/Code-Switch-Model")
 # Create fill-mask pipeline
 fill_mask = pipeline("fill-mask", model=model, tokenizer=tokenizer)
 
-# Test with examples
-test_example = "<mask>, kya scene hai?"  # Translation: <mask>, what's up?
-results = fill_mask(test_example)
-
+# Test with an example
+results = fill_mask("<mask>, kya scene hai?")  # "<mask>, what's up?"
 for result in results:
     print(f"Token: {result['token_str']}, Score: {result['score']:.4f}")
 ```
 
-## With Demographic Analysis (Zero-Shot Classification)
+## Reproducible Results
 
-```python
-from transformers import AutoTokenizer, AutoModelForMaskedLM, pipeline
+The model consistently produces the following results for our test examples:
 
-# Load model and tokenizer
-tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-base")
-model = AutoModelForMaskedLM.from_pretrained("lord-rajkumar/Code-Switch-Model")
-
-# Create a fill-mask pipeline
-fill_mask = pipeline("fill-mask", model=model, tokenizer=tokenizer)
-
-# Create zero-shot classification pipeline for demographic analysis
-classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
-
-def classify_demographics(token_str):
-    """Classify the demographics of a token"""
-    token_str_clean = token_str.strip()
-    if not token_str_clean:
-        return {"age": "unknown", "region": "unknown"}
-    
-    # Classify for age
-    result_age = classifier(token_str_clean, candidate_labels=["under 30", "over 30"])
-    age_label = result_age["labels"][0]
-    age_score = result_age["scores"][0]
-    
-    # Classify for region
-    result_region = classifier(token_str_clean, candidate_labels=["urban", "rural"])
-    region_label = result_region["labels"][0]
-    region_score = result_region["scores"][0]
-    
-    return {
-        "age": age_label,
-        "age_confidence": f"{age_score:.2f}",
-        "region": region_label,
-        "region_confidence": f"{region_score:.2f}"
-    }
-
-# Test with example sentences
-examples = [
-    "<mask>, kya scene hai?",   # Translation: <mask>, what's the scenario?
-    "Project pe <mask> progress chal raha hai.", # Translation: <mask> the progress on the project?
-    "Hello, <mask> kya kr raha hai?"    # Translation: Hello, <mask> what are you doing?
-]
-
-# Process each example
-for example in examples:
-    print(f"\n=== Input: {example} ===")
-    results = fill_mask(example)
-    for result in results:
-        token = result['token_str']
-        score = result['score']
-        print(f"\nToken: '{token}', Score: {score:.4f}")
-        
-        # Perform demographic classification
-        demographics = classify_demographics(token)
-        print(f"  Demographics: Age likely {demographics['age']} (confidence: {demographics['age_confidence']})")
-        print(f"               Region likely {demographics['region']} (confidence: {demographics['region_confidence']})")
+### Example 1: `<mask>, kya scene hai?`
 ```
-
-## Model Information
-
-- **Base Model**: XLM-RoBERTa
-- **Task**: Masked Language Modeling (MLM)
-- **Languages**: Hindi and English
-- **HuggingFace Model**: [lord-rajkumar/Code-Switch-Model](https://huggingface.co/lord-rajkumar/Code-Switch-Model)
-
-## Dataset
-
-The model was trained on code-switched conversations across different demographics:
-- Age groups: Teen, Adult, Senior
-- Genders: Male, Female
-- Regions: North, South, West of India
-
-## Jupyter Notebook Demo
-
-The easiest way to test the model is with the included Jupyter notebook:
-
-1. Make sure you have Jupyter installed: `pip install jupyter`
-2. Run the notebook: `jupyter notebook RunMe.ipynb`
-3. Run the cells sequentially to see the model in action
-
-The notebook demonstrates:
-- Basic token prediction
-- Demographic analysis using zero-shot classification
-- Multiple examples with expected outputs
-
-## Example Results with Demographic Analysis
-
-### Example 1: Casual greeting
-```
-=== Input: <mask>, kya scene hai? ===
-
 Token: 'Bhai', Score: 0.1594
-Demographics: Age likely under 30 (confidence: 0.66)
-              Region likely rural (confidence: 0.57)
-
 Token: 'Hello', Score: 0.1397
-Demographics: Age likely under 30 (confidence: 0.75)
-              Region likely urban (confidence: 0.56)
-
 Token: 'Hi', Score: 0.1270
-Demographics: Age likely under 30 (confidence: 0.67)
-              Region likely urban (confidence: 0.59)
-
 Token: 'Sir', Score: 0.0762
-Demographics: Age likely over 30 (confidence: 0.60)
-              Region likely urban (confidence: 0.55)
-
 Token: 'Hai', Score: 0.0436
-Demographics: Age likely under 30 (confidence: 0.69)
-              Region likely urban (confidence: 0.57)
 ```
 
-### Example 2: Work context
+### Example 2: `Project pe <mask> progress chal raha hai.`
 ```
-=== Input: Project pe <mask> progress chal raha hai. ===
-
 Token: 'kya', Score: 0.2187
-Demographics: Age likely under 30 (confidence: 0.72)
-              Region likely urban (confidence: 0.62)
-
 Token: 'bahut', Score: 0.1086
-Demographics: Age likely under 30 (confidence: 0.76)
-              Region likely urban (confidence: 0.54)
-
 Token: 'ek', Score: 0.0437
-Demographics: Age likely under 30 (confidence: 0.68)
-              Region likely urban (confidence: 0.53)
-
 Token: 'mera', Score: 0.0393
-Demographics: Age likely under 30 (confidence: 0.62)
-              Region likely urban (confidence: 0.53)
-
 Token: 'bhi', Score: 0.0346
-Demographics: Age likely under 30 (confidence: 0.66)
-              Region likely urban (confidence: 0.52)
 ```
 
-### Example 3: Mixed language inquiry
+### Example 3: `Hello, <mask> kya kr raha hai?`
 ```
-=== Input: Hello, <mask> kya kr raha hai? ===
-
 Token: 'aap', Score: 0.5082
-Demographics: Age likely under 30 (confidence: 0.72)
-              Region likely urban (confidence: 0.62)
-
 Token: 'Aap', Score: 0.0889
-Demographics: Age likely under 30 (confidence: 0.77)
-              Region likely rural (confidence: 0.56)
-
 Token: 'Abhi', Score: 0.0504
-Demographics: Age likely under 30 (confidence: 0.75)
-              Region likely urban (confidence: 0.50)
-
 Token: 'Bhai', Score: 0.0452
-Demographics: Age likely under 30 (confidence: 0.66)
-              Region likely rural (confidence: 0.57)
-
 Token: 'Rahul', Score: 0.0217
-Demographics: Age likely under 30 (confidence: 0.72)
-              Region likely urban (confidence: 0.85)
 ```
 
-## Demographic Analysis Findings
+## Demographic Analysis
 
 The zero-shot classification reveals interesting patterns in the model's predictions:
 
 1. **Age patterns**:
-   - Most predicted tokens are classified as "under 30", which aligns with the prevalence of code-switching among younger generations
-   - Formal terms like "Sir" are classified as "over 30", suggesting formality correlates with older age groups
+   - Most predicted tokens are classified as "under 30"
+   - Formal terms like "Sir" are classified as "over 30"
 
 2. **Regional patterns**:
    - English greetings like "Hello" and "Hi" are classified as more urban
-   - Terms like "Bhai" have a higher rural classification than English equivalents
-   - Personal names like "Rahul" have a very high urban confidence (0.85)
+   - Terms like "Bhai" have a higher rural classification
 
-3. **Confidence levels**:
-   - The model's confidence in age classification is generally higher than in regional classification
-   - Most classifications have moderate confidence (0.55-0.75), which is appropriate for this type of analysis
+## License
 
-These patterns suggest that code-switching has demographic dimensions that can be captured and analyzed using NLP techniques.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Files Included
 
-- `data-4.json` - The dataset used for training (for reference)
-- `RunMe.ipynb` - Jupyter notebook for testing the model with demographic analysis
+## Acknowledgments
 
-## Troubleshooting
-
-If you encounter any issues:
-
-1. **Model loading errors**: Ensure you have internet access to download from HuggingFace
-2. **Missing packages**: Make sure transformers and torch are installed
-3. **Version issues**: Try `pip install transformers==4.36.2` for compatibility
-
-No training or complex setup is required to test this model. Simply run the code provided in the README or use the Jupyter notebook for interactive exploration.
+- HuggingFace for the transformers library
+- XLM-RoBERTa authors for the base model
 
 ## Authors ✨
 
-- **[rapatel8](https://github.com/rapatel8)**
+- **[Rajkumar](https://github.com/rajpatel8)**
 - **[KhatoonSaima](https://github.com/KhatoonSaima)**
 - **[Chandravallika](https://github.com/Chandravallika)**
