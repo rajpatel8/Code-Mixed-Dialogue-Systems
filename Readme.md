@@ -14,7 +14,7 @@ This project implements a Masked Language Model (MLM) that understands and predi
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/hindi-english-code-switching.git
+git clone https://github.com/rajpatel8/hindi-english-code-switching.git
 cd hindi-english-code-switching
 
 # Install dependencies
