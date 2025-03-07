@@ -1,41 +1,59 @@
 from transformers import AutoTokenizer, AutoModelForMaskedLM, pipeline
 
-# Load the fine-tuned model and tokenizer
 model_path = "./code_switch_mlm/checkpoint-50"
-tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-base")  # Load tokenizer from original model
+tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-base")
 model = AutoModelForMaskedLM.from_pretrained(model_path)
-
-# Create a fill-mask pipeline
 fill_mask = pipeline("fill-mask", model=model, tokenizer=tokenizer)
 
+classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+
+candidate_labels_age = ["under 30", "over 30"]
+candidate_labels_region = ["urban", "rural"]
+# candidate_labels_gender = ["male", "female"]
+
+def classify_demographics(token_str):
+    token_str_clean = token_str.strip()
+    if not token_str_clean:
+        return {"age": "unknown", "region": "unknown"}
+    
+    # Classify for age
+    result_age = classifier(token_str_clean, candidate_labels_age)
+    age_label = result_age["labels"][0]
+    
+    # Classify for region
+    result_region = classifier(token_str_clean, candidate_labels_region)
+    region_label = result_region["labels"][0]
+    
+    # Classify for gender
+    # result_gender = classifier(token_str_clean, candidate_labels_gender)
+    # gender_label = result_gender["labels"][0]
+    
+    return {"age": age_label, "region": region_label}
+
 test_examples = [
-    "<mask>, kya scene hai?",                             # informal mix
-    "Aaj ka din full <mask> hai.",                         # mix of Hindi and English adjective
-    "Project pe <mask> progress chal raha hai.",           # using English word "progress"
-    "Meri meeting <mask> ho gayi, totally.",               # extra English adverb
-    "Tum <mask> kaam kar rahe ho, yaar?",                   # informal tone with code-switch
-    "Yaar, kal ka schedule <mask> hai, let's plan properly.",  # adding English clause
-    "Office mein <mask> mood hai aaj, it's really busy.",   # mixing expressions
-    "Dinner ke baad, <mask>movie dekhne ka plan hai?",     # casual mix
-    "College ke assignment ke liye <mask> study session ho raha hai.", # educational context
-    "Bhai, aaj ka game <mask> exciting hai, must watch!"    # sport/entertainment mix
+    "<mask>, kya scene hai?",
+    "Aaj ka din full <mask> hai.",
+    "Project pe <mask> progress chal raha hai.",
+    "Meri meeting <mask> ho gayi, totally.",
+    "Tum <mask> kaam kar rahe ho, yaar?",
+    "Yaar, kal ka schedule <mask> hai, let's plan properly.",
+    "Office mein <mask> mood hai aaj, it's really busy.",
+    "Dinner ke baad, <mask>movie dekhne ka plan hai?",
+    "College ke assignment ke liye <mask> study session ho raha hai.",
+    "Bhai, aaj ka game <mask> exciting hai, must watch!"
+    "<mask> was working on this project.",
+    "<mask> what are you doing?"
 ]
 
-
-# use test_examples 
-# for test_example in test_examples:
-#     result = fill_mask(test_example)
-#     print(f"\nTest Example: {test_example}")
-#     print(result)
-
-# Test with a simple spanish sentence.
-test_sentence4 = "Bhai, <mask> was working on this project."
-result4 = fill_mask(test_sentence4)
-print(f"\nTest Sentence 4: {test_sentence4}")
-for i, res in enumerate(result4):
-    print(f"Option {i+1}:")
-    for r in res:
-        print(f"  Sequence: {r['sequence']}")
-        print(f"  Score: {r['score']:.4f}")
-        print(f"  Token: {r['token']}")
-        print(f"  Token String: {r['token_str']}")
+# Process each test example
+for example in test_examples:
+    print(f"\nInput Sentence: {example}")
+    # Get the top 5 predictions for the masked token
+    predictions = fill_mask(example, top_k=5)
+    
+    # For each predicted token, dynamically determine the demographics
+    for pred in predictions:
+        token_str = pred["token_str"].strip()
+        demographics = classify_demographics(token_str)
+        print(f"Predicted Token: '{token_str}' with score {pred['score']:.4f}")
+        print(f"  -> Age: {demographics['age']}, Region: {demographics['region']}")

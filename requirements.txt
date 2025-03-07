@@ -1,0 +1,9 @@
+transformers>=4.36.0
+torch>=2.0.0
+jupyter>=1.0.0
+ipywidgets>=8.0.0
+tqdm>=4.64.0
+sentencepiece>=0.1.99
+protobuf>=3.20.0
+numpy>=1.24.0
+pandas>=2.0.0
