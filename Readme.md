@@ -230,6 +230,6 @@ No training or complex setup is required to test this model. Simply run the code
 
 ## Authors ✨
 
-- **[rapatel8](https://github.com/rajpatel8)**
+- **[Rajkumar](https://github.com/rajpatel8)**
 - **[KhatoonSaima](https://github.com/KhatoonSaima)**
 - **[Chandravallika](https://github.com/Chandravallika)**
