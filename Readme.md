@@ -227,3 +227,9 @@ If you encounter any issues:
 3. **Version issues**: Try `pip install transformers==4.36.2` for compatibility
 
 No training or complex setup is required to test this model. Simply run the code provided in the README or use the Jupyter notebook for interactive exploration.
+
+## Authors ✨
+
+- **[rapatel8](https://github.com/rapatel8)**
+- **[KhatoonSaima](https://github.com/KhatoonSaima)**
+- **[Chandravallika](https://github.com/Chandravallika)**
