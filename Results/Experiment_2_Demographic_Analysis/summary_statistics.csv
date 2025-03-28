@@ -1,0 +1,6 @@
+Category,Fine-tuned Top-1 (%),Baseline Top-1 (%),Improvement (%)
+Overall,45.0,35.0,10.0
+age_specific,66.66666666666666,66.66666666666666,0.0
+region_specific,0.0,0.0,0.0
+formality_specific,100.0,50.0,50.0
+code_switching_boundaries,25.0,25.0,0.0

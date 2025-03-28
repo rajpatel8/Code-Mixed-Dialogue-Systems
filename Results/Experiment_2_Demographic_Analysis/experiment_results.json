@@ -1,0 +1,208 @@
+{
+  "experiment_name": "Experiment_2_Demographic_Analysis",
+  "experiment_date": "2025-03-27 18:52:14",
+  "fine_tuned_model": {
+    "path": "./code_switch_mlm/checkpoint-50",
+    "metrics": {
+      "overall": {
+        "model": "Fine-tuned Model",
+        "cases_evaluated": 20,
+        "expected_in_top_1_percent": 45.0,
+        "expected_in_top_3_percent": 50.0,
+        "expected_in_top_5_percent": 50.0
+      },
+      "age_specific": {
+        "cases_evaluated": 6,
+        "expected_in_top_1_percent": 66.66666666666666,
+        "expected_in_top_3_percent": 66.66666666666666,
+        "expected_in_top_5_percent": 66.66666666666666
+      },
+      "region_specific": {
+        "cases_evaluated": 6,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "formality_specific": {
+        "cases_evaluated": 4,
+        "expected_in_top_1_percent": 100.0,
+        "expected_in_top_3_percent": 100.0,
+        "expected_in_top_5_percent": 100.0
+      },
+      "code_switching_boundaries": {
+        "cases_evaluated": 4,
+        "expected_in_top_1_percent": 25.0,
+        "expected_in_top_3_percent": 50.0,
+        "expected_in_top_5_percent": 50.0
+      },
+      "demographic_Teen": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 50.0,
+        "expected_in_top_3_percent": 50.0,
+        "expected_in_top_5_percent": 50.0
+      },
+      "demographic_Adult": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 100.0,
+        "expected_in_top_3_percent": 100.0,
+        "expected_in_top_5_percent": 100.0
+      },
+      "demographic_Senior": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 50.0,
+        "expected_in_top_3_percent": 50.0,
+        "expected_in_top_5_percent": 50.0
+      },
+      "demographic_North": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "demographic_South": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "demographic_West": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "demographic_Formal": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 100.0,
+        "expected_in_top_3_percent": 100.0,
+        "expected_in_top_5_percent": 100.0
+      },
+      "demographic_Informal": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 100.0,
+        "expected_in_top_3_percent": 100.0,
+        "expected_in_top_5_percent": 100.0
+      },
+      "demographic_Mixed": {
+        "cases_evaluated": 4,
+        "expected_in_top_1_percent": 25.0,
+        "expected_in_top_3_percent": 50.0,
+        "expected_in_top_5_percent": 50.0
+      }
+    }
+  },
+  "baseline_model": {
+    "path": "xlm-roberta-base",
+    "metrics": {
+      "overall": {
+        "model": "Baseline Model",
+        "cases_evaluated": 20,
+        "expected_in_top_1_percent": 35.0,
+        "expected_in_top_3_percent": 40.0,
+        "expected_in_top_5_percent": 40.0
+      },
+      "age_specific": {
+        "cases_evaluated": 6,
+        "expected_in_top_1_percent": 66.66666666666666,
+        "expected_in_top_3_percent": 66.66666666666666,
+        "expected_in_top_5_percent": 66.66666666666666
+      },
+      "region_specific": {
+        "cases_evaluated": 6,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "formality_specific": {
+        "cases_evaluated": 4,
+        "expected_in_top_1_percent": 50.0,
+        "expected_in_top_3_percent": 75.0,
+        "expected_in_top_5_percent": 75.0
+      },
+      "code_switching_boundaries": {
+        "cases_evaluated": 4,
+        "expected_in_top_1_percent": 25.0,
+        "expected_in_top_3_percent": 25.0,
+        "expected_in_top_5_percent": 25.0
+      },
+      "demographic_Teen": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 50.0,
+        "expected_in_top_3_percent": 50.0,
+        "expected_in_top_5_percent": 50.0
+      },
+      "demographic_Adult": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 100.0,
+        "expected_in_top_3_percent": 100.0,
+        "expected_in_top_5_percent": 100.0
+      },
+      "demographic_Senior": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 50.0,
+        "expected_in_top_3_percent": 50.0,
+        "expected_in_top_5_percent": 50.0
+      },
+      "demographic_North": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "demographic_South": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "demographic_West": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "demographic_Formal": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 100.0,
+        "expected_in_top_3_percent": 100.0,
+        "expected_in_top_5_percent": 100.0
+      },
+      "demographic_Informal": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 50.0,
+        "expected_in_top_5_percent": 50.0
+      },
+      "demographic_Mixed": {
+        "cases_evaluated": 4,
+        "expected_in_top_1_percent": 25.0,
+        "expected_in_top_3_percent": 25.0,
+        "expected_in_top_5_percent": 25.0
+      }
+    }
+  },
+  "demographic_analysis": {
+    "language_preference_by_demographic": {
+      "English": {
+        "Adult": 100.0,
+        "Formal": 100.0,
+        "Informal": 100.0,
+        "Mixed": 100.0,
+        "North": 100.0,
+        "Senior": 100.0,
+        "South": 100.0,
+        "Teen": 100.0,
+        "West": 100.0
+      }
+    },
+    "language_preference_by_formality": {
+      "English": {
+        "formal": 100.0,
+        "informal": 100.0
+      }
+    }
+  },
+  "experiment_summary": {
+    "overall_improvement": 10.0
+  }
+}

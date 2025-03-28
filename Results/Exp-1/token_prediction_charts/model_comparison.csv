@@ -1,0 +1,13 @@
+Masked Text,Fine-tuned Code-Switch Model - Top Prediction,Fine-tuned Code-Switch Model - Score,Fine-tuned Code-Switch Model - Age,Fine-tuned Code-Switch Model - Region,XLM-RoBERTa Base - Top Prediction,XLM-RoBERTa Base - Score,XLM-RoBERTa Base - Age,XLM-RoBERTa Base - Region
+"<mask>, kya scene hai?",Bhai,0.15937788784503937,under 30,rural,Hello,0.03668178617954254,under 30,urban
+Aaj ka din full <mask> hai.,time,0.08374910801649094,under 30,urban,time,0.0777328610420227,under 30,urban
+Project pe <mask> progress chal raha hai.,kya,0.2187073528766632,under 30,urban,bahut,0.10794182121753693,under 30,urban
+"Meri meeting <mask> ho gayi, totally.",mein,0.3039564788341522,under 30,urban,nahi,0.06497196853160858,under 30,rural
+"Tum <mask> kaam kar rahe ho, yaar?",kya,0.7688585519790649,under 30,urban,kya,0.4589806795120239,under 30,urban
+"Yaar, kal ka schedule <mask> hai, let's plan properly.",kya,0.15745310485363007,under 30,urban,nahi,0.10828834027051926,under 30,rural
+"Office mein <mask> mood hai aaj, it's really busy.",kya,0.31231042742729187,under 30,urban,bad,0.15912777185440063,under 30,urban
+"Dinner ke baad, <mask>movie dekhne ka plan hai?",kya,0.8526443839073181,under 30,urban,kya,0.6500897407531738,under 30,urban
+College ke assignment ke liye <mask> study session ho raha hai.,urgent,0.10472748428583145,under 30,urban,ek,0.11945565789937973,under 30,urban
+"Bhai, aaj ka game <mask> exciting hai, must watch!",bahut,0.7660237550735474,under 30,urban,bahut,0.4260651171207428,under 30,urban
+<mask> was working on this project.,I,0.9682305455207825,under 30,urban,I,0.6848821640014648,under 30,urban
+<mask> what are you doing?,So,0.5384262204170227,under 30,urban,So,0.36526086926460266,under 30,urban

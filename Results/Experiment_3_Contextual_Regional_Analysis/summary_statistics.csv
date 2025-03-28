@@ -1,0 +1,15 @@
+Category,Fine-tuned Top-1 (%),Baseline Top-1 (%),Improvement (%)
+Overall,15.0,20.0,-5.0
+regional_with_context,16.666666666666664,16.666666666666664,0.0
+context_length_variation,12.5,12.5,0.0
+script_variation,16.666666666666664,33.33333333333333,-16.666666666666664
+Region: North,0.0,0.0,0.0
+Region: South,0.0,0.0,0.0
+Region: West,50.0,50.0,0.0
+Region: Mixed,14.285714285714285,21.428571428571427,-7.142857142857142
+Context: minimal,0.0,0.0,0.0
+Context: short,20.0,40.0,-20.0
+Context: medium,12.5,25.0,-12.5
+Context: long,20.0,0.0,20.0
+Script: romanized,16.666666666666664,16.666666666666664,0.0
+Script: mixed,12.5,25.0,-12.5

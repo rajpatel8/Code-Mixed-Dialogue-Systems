@@ -1,0 +1,187 @@
+{
+  "experiment_name": "Experiment_3_Contextual_Regional_Analysis",
+  "experiment_date": "2025-03-27 19:48:45",
+  "fine_tuned_model": {
+    "path": "./code_switch_mlm/checkpoint-50",
+    "metrics": {
+      "overall": {
+        "model": "Fine-tuned Model",
+        "cases_evaluated": 20,
+        "expected_in_top_1_percent": 15.0,
+        "expected_in_top_3_percent": 20.0,
+        "expected_in_top_5_percent": 40.0
+      },
+      "regional_with_context": {
+        "cases_evaluated": 6,
+        "expected_in_top_1_percent": 16.666666666666664,
+        "expected_in_top_3_percent": 16.666666666666664,
+        "expected_in_top_5_percent": 16.666666666666664
+      },
+      "context_length_variation": {
+        "cases_evaluated": 8,
+        "expected_in_top_1_percent": 12.5,
+        "expected_in_top_3_percent": 12.5,
+        "expected_in_top_5_percent": 50.0
+      },
+      "script_variation": {
+        "cases_evaluated": 6,
+        "expected_in_top_1_percent": 16.666666666666664,
+        "expected_in_top_3_percent": 33.33333333333333,
+        "expected_in_top_5_percent": 50.0
+      },
+      "region_North": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "region_South": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "region_West": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 50.0,
+        "expected_in_top_3_percent": 50.0,
+        "expected_in_top_5_percent": 50.0
+      },
+      "region_Mixed": {
+        "cases_evaluated": 14,
+        "expected_in_top_1_percent": 14.285714285714285,
+        "expected_in_top_3_percent": 21.428571428571427,
+        "expected_in_top_5_percent": 50.0
+      },
+      "context_long": {
+        "cases_evaluated": 5,
+        "expected_in_top_1_percent": 20.0,
+        "expected_in_top_3_percent": 20.0,
+        "expected_in_top_5_percent": 40.0
+      },
+      "context_short": {
+        "cases_evaluated": 5,
+        "expected_in_top_1_percent": 20.0,
+        "expected_in_top_3_percent": 20.0,
+        "expected_in_top_5_percent": 40.0
+      },
+      "context_minimal": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "context_medium": {
+        "cases_evaluated": 8,
+        "expected_in_top_1_percent": 12.5,
+        "expected_in_top_3_percent": 25.0,
+        "expected_in_top_5_percent": 50.0
+      },
+      "script_romanized": {
+        "cases_evaluated": 12,
+        "expected_in_top_1_percent": 16.666666666666664,
+        "expected_in_top_3_percent": 16.666666666666664,
+        "expected_in_top_5_percent": 25.0
+      },
+      "script_mixed": {
+        "cases_evaluated": 8,
+        "expected_in_top_1_percent": 12.5,
+        "expected_in_top_3_percent": 25.0,
+        "expected_in_top_5_percent": 62.5
+      }
+    }
+  },
+  "baseline_model": {
+    "path": "xlm-roberta-base",
+    "metrics": {
+      "overall": {
+        "model": "Baseline Model",
+        "cases_evaluated": 20,
+        "expected_in_top_1_percent": 20.0,
+        "expected_in_top_3_percent": 30.0,
+        "expected_in_top_5_percent": 30.0
+      },
+      "regional_with_context": {
+        "cases_evaluated": 6,
+        "expected_in_top_1_percent": 16.666666666666664,
+        "expected_in_top_3_percent": 33.33333333333333,
+        "expected_in_top_5_percent": 33.33333333333333
+      },
+      "context_length_variation": {
+        "cases_evaluated": 8,
+        "expected_in_top_1_percent": 12.5,
+        "expected_in_top_3_percent": 25.0,
+        "expected_in_top_5_percent": 25.0
+      },
+      "script_variation": {
+        "cases_evaluated": 6,
+        "expected_in_top_1_percent": 33.33333333333333,
+        "expected_in_top_3_percent": 33.33333333333333,
+        "expected_in_top_5_percent": 33.33333333333333
+      },
+      "region_North": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "region_South": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 50.0,
+        "expected_in_top_5_percent": 50.0
+      },
+      "region_West": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 50.0,
+        "expected_in_top_3_percent": 50.0,
+        "expected_in_top_5_percent": 50.0
+      },
+      "region_Mixed": {
+        "cases_evaluated": 14,
+        "expected_in_top_1_percent": 21.428571428571427,
+        "expected_in_top_3_percent": 28.57142857142857,
+        "expected_in_top_5_percent": 28.57142857142857
+      },
+      "context_long": {
+        "cases_evaluated": 5,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "context_short": {
+        "cases_evaluated": 5,
+        "expected_in_top_1_percent": 40.0,
+        "expected_in_top_3_percent": 60.0,
+        "expected_in_top_5_percent": 60.0
+      },
+      "context_minimal": {
+        "cases_evaluated": 2,
+        "expected_in_top_1_percent": 0.0,
+        "expected_in_top_3_percent": 0.0,
+        "expected_in_top_5_percent": 0.0
+      },
+      "context_medium": {
+        "cases_evaluated": 8,
+        "expected_in_top_1_percent": 25.0,
+        "expected_in_top_3_percent": 37.5,
+        "expected_in_top_5_percent": 37.5
+      },
+      "script_romanized": {
+        "cases_evaluated": 12,
+        "expected_in_top_1_percent": 16.666666666666664,
+        "expected_in_top_3_percent": 25.0,
+        "expected_in_top_5_percent": 25.0
+      },
+      "script_mixed": {
+        "cases_evaluated": 8,
+        "expected_in_top_1_percent": 25.0,
+        "expected_in_top_3_percent": 37.5,
+        "expected_in_top_5_percent": 37.5
+      }
+    }
+  },
+  "experiment_summary": {
+    "overall_improvement": -5.0
+  }
+}
